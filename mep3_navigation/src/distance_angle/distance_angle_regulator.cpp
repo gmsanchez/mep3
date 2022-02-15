@@ -35,11 +35,11 @@ DistanceAngleRegulator::DistanceAngleRegulator(const rclcpp::NodeOptions & optio
 
   this->declare_parameter("kp_distance", 10.0);
   this->declare_parameter("ki_distance", 0.0);
-  this->declare_parameter("kd_distance", 0.0);  // na pravom robotu 5.0
+  this->declare_parameter("kd_distance", 0.0); // na pravom robotu 5.0
 
   this->declare_parameter("kp_angle", 8.0);
   this->declare_parameter("ki_angle", 0.0);
-  this->declare_parameter("kd_angle", 0.0);  // na pravom robotu 3.5
+  this->declare_parameter("kd_angle", 0.0); // na pravom robotu 3.5
 
   debug_ = this->declare_parameter("debug", false);
   parameters_callback_handle_ = this->add_on_set_parameters_callback(
