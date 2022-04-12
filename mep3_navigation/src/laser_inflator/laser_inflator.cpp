@@ -133,6 +133,12 @@ private:
       const double x = point_range * cosf(point_angle) + x_offset;
       const double y = point_range * sinf(point_angle) + y_offset;
 
+      // Remove total stop button that out lidar can see
+      if (point_range < 0.13) {
+        *it = std::numeric_limits<float>::infinity();
+        continue;
+      }
+
       // Is (x, y) valid?
       // Currently, just check if the point is inside a rectangle
       // a bit smaller than the playing area.
