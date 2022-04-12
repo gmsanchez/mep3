@@ -69,23 +69,23 @@ controller_server:
     # Goal checker parameters
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.0085
+      xy_goal_tolerance: 0.006
       yaw_goal_tolerance: 0.018
       stateful: True
     # Controller parameters
     # RPP Custom controller for Memristor
     FollowPath:
       plugin: "mep3_navigation::RegulatedPurePursuitController"
-      desired_linear_vel: 0.6
-      max_linear_accel: 0.8
-      max_linear_decel: 0.8
+      desired_linear_vel: 0.4
+      max_linear_accel: 0.5
+      max_linear_decel: 0.5
       max_linear_jerk: 99999.0
       max_angular_jerk: 99999.0
       lookahead_dist: 0.2
       min_lookahead_dist: 0.15
-      max_lookahead_dist: 0.4
-      lookahead_time: 0.66
-      rotate_to_heading_angular_vel: 7.0
+      max_lookahead_dist: 0.5
+      lookahead_time: 1.25
+      rotate_to_heading_angular_vel: 5.0
       transform_tolerance: 0.1
       use_velocity_scaled_lookahead_dist: true
       min_approach_linear_velocity: 0.05
@@ -98,7 +98,7 @@ controller_server:
       allow_reversing: false
       use_rotate_to_heading: true
       rotate_to_heading_min_angle: 0.785
-      max_angular_accel: 7.0
+      max_angular_accel: 6.0
       cost_scaling_dist: 0.35
       cost_scaling_gain: 1.0
       inflation_cost_scaling_factor: 4.0
@@ -189,7 +189,7 @@ local_costmap:
       rolling_window: true
       width: 2
       height: 2
-      resolution: 0.004
+      resolution: 0.002
       robot_radius: 0.155
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
       obstacle_layer:
@@ -227,7 +227,7 @@ global_costmap:
       robot_base_frame: base_link
       use_sim_time: True
       robot_radius: 0.155
-      resolution: 0.004
+      resolution: 0.002
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
       obstacle_layer:

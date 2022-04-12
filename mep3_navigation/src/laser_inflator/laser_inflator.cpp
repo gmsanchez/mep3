@@ -91,8 +91,12 @@ private:
         const float new_range = std::hypot(new_x, new_y);
         const float new_angle = atan2f(new_y, new_x);
 
-        const int index =
+        int index =
           static_cast<int>((new_angle - scan_out.angle_min) / scan_out.angle_increment);
+        // TODO(angstrem98) OVO PROVERI
+        if (index >= 359) {
+          index = 359;
+        }
         if (new_range < scan_out.ranges.at(index)) {
           scan_out.ranges.at(index) = new_range;
         }
@@ -134,7 +138,7 @@ private:
       const double y = point_range * sinf(point_angle) + y_offset;
 
       // Remove total stop button that out lidar can see
-      if (point_range < 0.13) {
+      if (point_range < 0.155) {
         *it = std::numeric_limits<float>::infinity();
         continue;
       }

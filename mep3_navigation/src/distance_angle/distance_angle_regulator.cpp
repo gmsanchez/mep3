@@ -248,6 +248,8 @@ void DistanceAngleRegulator::control_loop()
   if (action_running_) {
     output_enabled_ = true;
   }
+  // dodavano
+  //output_enabled_ = true;
   if (output_enabled_) {
     if (distance_finished && angle_finished) {
       output_enabled_ = false;
@@ -525,7 +527,7 @@ void DistanceAngleRegulator::navigate_to_pose()
 
   lock.unlock();
 
-  rclcpp::Rate r(200);
+  rclcpp::Rate r(50);
 
   const int timeout = 40;
   int timeout_counter = 0;
@@ -570,7 +572,7 @@ void DistanceAngleRegulator::navigate_to_pose()
 
       case MotionState::MOVING_TO_GOAL:
         RUN_EACH_NTH_CYCLES(
-          uint8_t, 4, {
+          uint8_t, 6, {
         delta_x = goal_x - map_robot_x_;
         delta_y = goal_y - map_robot_y_;
         distance_to_goal = std::hypot(delta_x, delta_y);
