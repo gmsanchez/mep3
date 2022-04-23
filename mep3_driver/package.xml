@@ -21,6 +21,7 @@
   <depend>python3-can</depend>
   <depend>python3-gpiozero</depend>
   <depend>rpi_lcd</depend>
+  <depend>tf2_ros</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

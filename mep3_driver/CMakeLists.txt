@@ -22,6 +22,8 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_lifecycle REQUIRED)
 find_package(can_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(rclpy REQUIRED)
 
 add_library(
   ${PROJECT_NAME}
@@ -83,6 +85,7 @@ install(PROGRAMS
   mep3_driver/cinch_driver.py
   mep3_driver/lcd_driver.py
   mep3_driver/resistance_meter_driver.py
+  mep3_driver/infrared_driver.py
   DESTINATION lib/${PROJECT_NAME}
 )
 ament_python_install_package(${PROJECT_NAME}
