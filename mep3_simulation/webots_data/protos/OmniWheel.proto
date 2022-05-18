@@ -37,6 +37,8 @@ Group {
 		  contactMaterial "omni_wheel"
 		  boundingObject USE OMNI_SHAPE
 		  physics Physics {
+        density -1
+        mass 1
 		  }
 		}
 		Solid {

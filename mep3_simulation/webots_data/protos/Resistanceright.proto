@@ -90,8 +90,22 @@ Transform {
 								}
 							]
 						}
+						physics Physics {}
+						type "force-3d"
 					}
 				]
+        boundingObject Transform {
+          translation 0 -0.1295 0.1172
+          children [
+            Box {
+              size 0.022 0.001 0.0506 
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass IS hand_mass
+        }
 			}
 		}
 	]
