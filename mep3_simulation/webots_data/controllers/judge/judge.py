@@ -49,7 +49,7 @@ def main():
 
     # Set initial poses
     if color == 'yellow':
-        robot_big.set_position(x=-1.2491, y=0.4369, theta=pi / 2)
+        robot_big.set_position(x=-1.2491, y=0.489, theta=pi / 2)
         robot_small.set_position(x=-1.1991, y=0.16, theta=0)
         robot_opponent_big.set_position(x=1.26, y=0.46, theta=pi)
         robot_opponent_small.set_position(x=1.26, y=0.128, theta=pi)
@@ -59,7 +59,7 @@ def main():
         statuette.set_position(x=-1.267, y=-0.768, z=0.125, theta=0.785)
         replica.set_position(x=-1.2621, y=0.14369, z=0.1579, theta=pi/2)
     else:
-        robot_big.set_position(x=1.2491, y=0.4369, theta=pi / 2)
+        robot_big.set_position(x=1.2491, y=0.489, theta=pi / 2)
         robot_small.set_position(x=1.1991, y=0.16, theta=-pi)
         robot_opponent_big.set_position(x=-1.26, y=0.46, theta=0)
         robot_opponent_small.set_position(x=-1.26, y=0.128, theta=0)

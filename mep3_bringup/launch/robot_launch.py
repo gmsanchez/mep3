@@ -17,9 +17,9 @@ from launch.substitutions import PathJoinSubstitution
 
 INITIAL_POSE_MATRIX = [
     ('small', 'purple', [1.1991, 0.16, -pi]),  # KOSTA
-    ('big', 'purple', [1.2491, 0.4369, pi/2]),  # FLORIAN
+    ('big', 'purple', [1.2491, 0.489, pi/2]),  # FLORIAN
     ('small', 'yellow', [-1.991, 0.16, 0]),  # KOSTA
-    ('big', 'yellow', [-1.2491, 0.4369, pi / 2]),  # FLORIAN
+    ('big', 'yellow', [-1.2491, 0.489, pi / 2]),  # FLORIAN
 ]
 
 

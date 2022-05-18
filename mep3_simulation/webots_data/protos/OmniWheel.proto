@@ -3,6 +3,7 @@
 
 PROTO OmniWheel [
   hiddenField SFFloat wheel_height 0.0075
+  hiddenField SFFloat mass_omniwheel 3
 ]
 {
 Group {
@@ -38,7 +39,7 @@ Group {
 		  boundingObject USE OMNI_SHAPE
 		  physics Physics {
         density -1
-        mass 1
+        mass IS mass_omniwheel 
 		  }
 		}
 		Solid {
@@ -50,6 +51,8 @@ Group {
 			contactMaterial "omni_wheel"
 			boundingObject USE OMNI_SHAPE
 			physics Physics {
+        density -1
+        mass IS mass_omniwheel 
 		  }
 		}
 		Solid {
@@ -61,6 +64,8 @@ Group {
 			contactMaterial "omni_wheel"
 			boundingObject USE OMNI_SHAPE
 			physics Physics {
+        density -1
+        mass IS mass_omniwheel 
 		  }
 		}
 	]

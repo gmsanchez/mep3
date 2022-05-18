@@ -9,7 +9,7 @@ PROTO RobotFlorijan [
   field SFBool     supervisor         FALSE
   field SFInt32    arucoNumber 1
   field SFString {"simple", "complex"} complexity "simple"
-  hiddenField SFFloat mass_robot         15
+  hiddenField SFFloat mass_robot         1
   hiddenField SFFloat mass_motor_wheel   0.05
   hiddenField SFFloat mass_encoder_wheel 0.05
   hiddenField SFFloat mass_arm    		 0.2
@@ -46,7 +46,6 @@ Robot {
 				Obaracright{}
 				Resistanceleft{}
 				Resistanceright{}
-				
 			]
 		}
 		Wheel {}
@@ -99,13 +98,8 @@ Robot {
 					}	
 				]
 			}
-			
-			
-			
-			
 		]
 	}
-
   physics Physics {
     density -1
     mass IS mass_robot

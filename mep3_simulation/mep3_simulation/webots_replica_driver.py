@@ -1,7 +1,7 @@
 from math import radians
 
 
-REPLICA_DECOUPLING_ANGLE = 80   # degrees
+REPLICA_DECOUPLING_ANGLE = 70   # degrees
 
 
 class WebotsReplicaDriver:
@@ -25,6 +25,6 @@ class WebotsReplicaDriver:
         """
         if self.__finished:
             return
-        if self.__encoder.getValue() > radians(REPLICA_DECOUPLING_ANGLE):
+        if self.__encoder.getValue() < radians(REPLICA_DECOUPLING_ANGLE):
             self.__connector.unlock()
             self.__finished = True

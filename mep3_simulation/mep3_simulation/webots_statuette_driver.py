@@ -1,8 +1,8 @@
 from math import radians
 
 
-REPLICA_DECOUPLING_ANGLE = radians(80)
-STATUETTE_DECOUPLING_ANGLE = radians(5)
+REPLICA_DECOUPLING_ANGLE = radians(70)
+STATUETTE_DECOUPLING_ANGLE = radians(150)
 
 
 class WebotsStatuetteDriver:
@@ -31,10 +31,10 @@ class WebotsStatuetteDriver:
         if self.__connector.getPresence() and not self.__connector.isLocked():
             # state: coupled_statuette
             self.__connector.lock()
-        elif self.__encoder.getValue() > REPLICA_DECOUPLING_ANGLE:
+        elif self.__encoder.getValue() < REPLICA_DECOUPLING_ANGLE:
             self.__enable_statuette_decoupling = True
         elif self.__encoder.getValue(
-        ) <= STATUETTE_DECOUPLING_ANGLE and self.__connector.isLocked(
+        ) >= STATUETTE_DECOUPLING_ANGLE and self.__connector.isLocked(
         ) and self.__enable_statuette_decoupling:
             self.__connector.unlock()
             self.__finished = True
