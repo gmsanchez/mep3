@@ -10,9 +10,9 @@ class WebotsStatuetteDriver:
     def init(self, webots_node, properties):
         self.__robot = webots_node.robot
         timestep = int(self.__robot.getBasicTimeStep())
-        self.__connector = self.__robot.getDevice('hand_L_statuette_connector')
+        self.__connector = self.__robot.getDevice('box_statuette_connector')
         self.__connector.enablePresence(timestep)
-        self.__motor = self.__robot.getDevice('hand_mid_L')
+        self.__motor = self.__robot.getDevice('box')
         self.__encoder = self.__motor.getPositionSensor()
         self.__encoder.enable(timestep)
         self.__finished = False

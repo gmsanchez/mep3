@@ -48,22 +48,7 @@
 
         <plugin type="mep3_simulation.webots_dynamixel_driver.WebotsDynamixelDriver">
             <namespace>big</namespace>
-            <motorName>arm_left_motor_base</motorName>
-        </plugin>
-
-        <plugin type="mep3_simulation.webots_dynamixel_driver.WebotsDynamixelDriver">
-            <namespace>big</namespace>
             <motorName>box</motorName>
-        </plugin>
-
-        <plugin type="mep3_simulation.webots_vacuum_pump_driver.WebotsVacuumPumpDriver">
-            <namespace>big</namespace>
-            <connectorName>box_statuette_connector</connectorName>
-        </plugin>
-
-        <plugin type="mep3_simulation.webots_vacuum_pump_driver.WebotsVacuumPumpDriver">
-            <namespace>big</namespace>
-            <connectorName>box_replica_connector</connectorName>
         </plugin>
 
         <plugin type="mep3_simulation.webots_cinch_driver.WebotsCinchDriver" />

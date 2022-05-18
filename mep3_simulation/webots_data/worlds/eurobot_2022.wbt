@@ -588,6 +588,6 @@ DEF JUDGE Robot {
 DEF STATUETTE Statuette {
 }
 DEF REPLICA Replica {
-  translation 1.2491 0.4369 0
+  translation 1.2491 0.4369 0.1579
   rotation 0 0 1 -1.5708
 }

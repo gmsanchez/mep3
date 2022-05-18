@@ -16,10 +16,10 @@ from launch.conditions import IfCondition
 from launch.substitutions import PathJoinSubstitution
 
 INITIAL_POSE_MATRIX = [
-    ('small', 'purple', [1.249, 0.147, -pi / 2]),
-    ('big', 'yellow', [-1.236, 0.162, -pi / 2]),
-    ('big', 'purple', [1.249, 0.452, pi/2]),
-    ('small', 'yellow', [-1.242, 0.452, pi/2]),
+    ('small', 'purple', [1.1991, 0.16, -pi]),  # KOSTA
+    ('big', 'purple', [1.2491, 0.4369, pi/2]),  # FLORIAN
+    ('small', 'yellow', [-1.991, 0.16, 0]),  # KOSTA
+    ('big', 'yellow', [-1.2491, 0.4369, pi / 2]),  # FLORIAN
 ]
 
 
@@ -148,7 +148,7 @@ def generate_launch_description():
                      output='screen',
                      parameters=[{
                          'use_sim_time': use_simulation,
-                     }, 
+                     },
                      [
                         get_package_share_directory('mep3_navigation'),
                             '/params',
@@ -188,7 +188,7 @@ def generate_launch_description():
                                       ('scan', 'scan_filtered')],
                           output='screen',
                           namespace=namespace)
-    
+
     laser_filters = Node(package='laser_filters',
                           executable='scan_to_scan_filter_chain',
                           parameters=[
