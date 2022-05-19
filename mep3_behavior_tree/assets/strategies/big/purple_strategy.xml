@@ -2,7 +2,7 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <SequenceStar>
-            <Navigate name="1.2491;0.16;180" />
+            <Navigate goal="1.2491;0.16;180" />
             <Wait duration="100000.0" name="Wait one big purple main strategy" />
         </SequenceStar>
     </BehaviorTree>
