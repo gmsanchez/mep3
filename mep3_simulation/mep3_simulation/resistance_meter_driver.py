@@ -66,10 +66,10 @@ class ResistanceMeterDriver:
         self.__robot = self.__supervisor.getSelf()
 
         self.__touch_sensor_front = self.__supervisor.getDevice(
-            f'hand_{self.measuring_side}_Dz_touch_sensor_front'
+            f'measure_{self.measuring_side}_touch_sensor_front'
         )
         self.__touch_sensor_back = self.__supervisor.getDevice(
-            f'hand_{self.measuring_side}_Dz_touch_sensor_back'
+            f'measure_{self.measuring_side}_touch_sensor_back'
         )
 
         timestep = int(self.__supervisor.getBasicTimeStep())
@@ -78,7 +78,7 @@ class ResistanceMeterDriver:
         self.__touch_sensor_back.enable(timestep)
 
         self.__arm = self.__supervisor.getDevice(
-            f'hand_{self.measuring_side}_Dz'
+            f'measure_{self.measuring_side}'
         )
 
         self.__action = ActionServer(

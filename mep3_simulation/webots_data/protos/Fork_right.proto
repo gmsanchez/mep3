@@ -6,7 +6,7 @@ PROTO Fork_right [
   hiddenField SFVec3f x_axis 1 0 0
   hiddenField SFVec3f y_axis 0 1 0
   hiddenField SFVec3f z_axis 0 0 1
-  hiddenField SFFloat hand_mass 0.05
+  hiddenField SFFloat mass_hand 0.05
 ]
 {
 %< 
@@ -86,9 +86,12 @@ Transform {
 								}	
 							]
 						}
-							
 					]	
 				}
+        physics Physics {
+          density -1
+          mass IS mass_hand
+        } 
 			}
 		}
 	]

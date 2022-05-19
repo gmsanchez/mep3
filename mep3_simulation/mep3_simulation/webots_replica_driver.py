@@ -1,7 +1,7 @@
 from math import radians
 
 
-REPLICA_DECOUPLING_ANGLE = 80   # degrees
+REPLICA_DECOUPLING_ANGLE = 70   # degrees
 
 
 class WebotsReplicaDriver:
@@ -9,8 +9,8 @@ class WebotsReplicaDriver:
     def init(self, webots_node, properties):
         self.__robot = webots_node.robot
         timestep = int(self.__robot.getBasicTimeStep())
-        self.__connector = self.__robot.getDevice('hand_L_replica_connector')
-        self.__motor = self.__robot.getDevice('hand_mid_L')
+        self.__connector = self.__robot.getDevice('box_replica_connector')
+        self.__motor = self.__robot.getDevice('box')
         self.__encoder = self.__motor.getPositionSensor()
         self.__encoder.enable(timestep)
         self.__finished = False
@@ -25,6 +25,6 @@ class WebotsReplicaDriver:
         """
         if self.__finished:
             return
-        if self.__encoder.getValue() > radians(REPLICA_DECOUPLING_ANGLE):
+        if self.__encoder.getValue() < radians(REPLICA_DECOUPLING_ANGLE):
             self.__connector.unlock()
             self.__finished = True

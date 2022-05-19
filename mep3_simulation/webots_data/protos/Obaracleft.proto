@@ -6,7 +6,7 @@ PROTO Obaracleft [
   hiddenField SFVec3f x_axis 1 0 0
   hiddenField SFVec3f y_axis 0 1 0
   hiddenField SFVec3f z_axis 0 0 1
-  hiddenField SFFloat hand_mass 0.05
+  hiddenField SFFloat hand_mass 0.5
 ]
 {
 %< 
@@ -17,14 +17,14 @@ PROTO Obaracleft [
   var min_position;
   var max_position;
   
-    min_position = -1.57079;
-    max_position = 0.349066; 
-    position = 0;
-    anchor = fields.anchor_center.value;
-    axis = fields.x_axis.value;
-    axis.x = -axis.x;
-    axis.y = -axis.y;
-    axis.z = -axis.z;
+  min_position = 70/180*Math.PI;
+  max_position = 250/180*Math.PI; 
+  position = 240/180*Math.PI;
+  anchor = fields.anchor_center.value;
+  axis = fields.x_axis.value;
+  axis.x = -axis.x;
+  axis.y = -axis.y;
+  axis.z = -axis.z;
 >%
 Transform {
 	children [
@@ -36,16 +36,16 @@ Transform {
 			}
 			device [
 				RotationalMotor {
-					name "hand_obarac_left"
+					name "pusher_left"
 					minPosition %<= min_position >%
 					maxPosition %<= max_position >%
 				}
 				PositionSensor {
-					name "hand_obarac_left_sensor"
+					name "pusher_left_sensor"
 				}
 			]
 			endPoint Solid {
-				name "hand_obarac_left"
+				name "pusher_left"
 				children [
 					Shape {
 						appearance PBRAppearance {
