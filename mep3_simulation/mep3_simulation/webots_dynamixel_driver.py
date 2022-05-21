@@ -56,6 +56,12 @@ class WebotsDynamixelDriver:
         return CancelResponse.ACCEPT
 
     async def __execute_callback(self, goal_handle):
+        # Return sucesss
+        result = DynamixelCommand.Result()
+        goal_handle.succeed()
+        result.result = 0
+        return result
+
         position = radians(goal_handle.request.position) * \
             self.__gear_ratio
         velocity = radians(goal_handle.request.velocity) * \

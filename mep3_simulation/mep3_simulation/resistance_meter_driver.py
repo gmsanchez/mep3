@@ -100,6 +100,9 @@ class ResistanceMeterDriver:
     def __execute_callback(self, goal_handle):
         result = ResistanceMeter.Result()
         resistance = 0
+        result.resistance = resistance
+        goal_handle.succeed()
+        return result
 
         if goal_handle.is_cancel_requested:
             goal_handle.cancelled()

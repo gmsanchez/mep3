@@ -72,6 +72,9 @@ class WebotsVacuumPumpDriver:
         return CancelResponse.ACCEPT
 
     async def __execute_callback(self, goal_handle):
+        goal_handle.succeed()
+        return result
+
         connect = goal_handle.request.connect
         result = VacuumPumpCommand.Result()
 
