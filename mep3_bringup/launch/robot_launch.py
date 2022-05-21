@@ -171,7 +171,7 @@ def generate_launch_description():
         output='screen',
         arguments=[
             '0', '0', '0.3',
-            str(-pi / 2), '0', '0', 'base_link', 'laser'
+            str(pi), '0', '0', 'base_link', 'laser'
         ],
         namespace=namespace,
         remappings=[('/tf_static', 'tf_static')],
