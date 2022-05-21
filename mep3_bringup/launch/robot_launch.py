@@ -22,6 +22,10 @@ INITIAL_POSE_MATRIX = [
     ('big', 'yellow', [-1.2491, 0.102, pi / 2]),  # FLORIAN
 ]
 
+PREDEFINED_TABLE_NAMES = [
+    'table1',
+    'table2'
+]
 
 def verify_color(context, *args, **kwargs):
     if LaunchConfiguration('color').perform(context) \
@@ -122,6 +126,7 @@ def generate_launch_description():
             'color': color,
             'table': table,
             'strategy': strategy,
+            'predefined_tables': PREDEFINED_TABLE_NAMES
         }],
         namespace=namespace,
         condition=launch.conditions.IfCondition(use_behavior_tree))
@@ -171,7 +176,7 @@ def generate_launch_description():
         output='screen',
         arguments=[
             '0', '0', '0.3',
-            str(-pi / 2), '0', '0', 'base_link', 'laser'
+            str(pi), '0', '0', 'base_link', 'laser'
         ],
         namespace=namespace,
         remappings=[('/tf_static', 'tf_static')],
@@ -180,8 +185,8 @@ def generate_launch_description():
     laser_inflator = Node(package='mep3_navigation',
                           executable='laser_inflator',
                           parameters=[{
-                              'inflation_radius': 0.05,
-                              'inflation_angular_step': 0.09
+                              'inflation_radius': 0.15,
+                              'inflation_angular_step': 0.12
                           }],
                           remappings=[('/tf_static', 'tf_static'),
                                       ('/tf', 'tf'),

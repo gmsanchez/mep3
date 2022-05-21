@@ -34,7 +34,7 @@ git clone git@github.com:memristor/mep3.git src/mep3
 sudo apt install python3-vcstool
 vcs import src < src/mep3/mep3.repos
 rosdep update
-rosdep install --from-paths src --ignore-src
+rosdep install --from-paths src --ignore-src -r
 
 # Create udev rules so rplidar and dynamixel usb ports static names
 sudo cp src/mep3/tools/rplidar.rules /etc/udev/rules.d/
@@ -65,7 +65,7 @@ webots ~/ros2_ws/src/mep3/mep3_simulation/webots_data/worlds/eurobot_2022.wbt
 - Change working directory to `~/ros2_ws`
 - Install dependencies if there are changes in `package.xml` files 
 ```sh
-rosdep install --from-paths src --ignore-src
+rosdep install --from-paths src --ignore-src -r
 ```
 - Build files (and rebuild on every modification):
 ```sh
@@ -149,7 +149,7 @@ Example task:
     <include path="../../skills/common_scoreboard.xml" />
     <BehaviorTree ID="WorkingShed">
         <SequenceStar>
-            <Navigate name="1;1;180" />
+            <Navigate goal="1;1;180" />
             <SubTree ID="ScoreboardWorkShed" __shared_blackboard="true" />
         </SequenceStar>
     </BehaviorTree>
@@ -163,7 +163,7 @@ Example strategy:
     <BehaviorTree ID="BehaviorTree">
         <SequenceStar>
             <Wait duration="5.0" name="Wait a bit" />
-            <Navigate name="1;1;180" />
+            <Navigate goal="1;1;180" />
             <SubTree ID="WorkingShed" __shared_blackboard="true" />
         </SequenceStar>
     </BehaviorTree>
@@ -172,6 +172,22 @@ Example strategy:
 
 Strategy file should include tasks, which in turn include skills.
 Skill subtrees can also be called from strategies directly.
+
+#### Table-specific action values
+
+When `table:=example` parameter is passed, actions defined in BehaviorTree XML files
+will attempt to use port named `port_example` instead of `port` if it exists.
+
+Currently supported table-specific action port offsets are:
+- Dynamixel: `position`
+- Motion: `value`
+- Navigate, PreciseNavigate, NavigateThrough: `goal`
+- ResistanceMeter: `resistance`
+
+Example `Navigate` action with values for tables `foo` and `bar`:
+```xml
+<Navigate goal="0.1;0.2;30" goal_foo="-0.003;+0.009;+00.3" goal_bar="-.007;-0.01;+0.1" />
+```
 
 ### Terminal shortcuts
 
