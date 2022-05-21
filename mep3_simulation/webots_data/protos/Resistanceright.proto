@@ -18,9 +18,9 @@ PROTO Resistanceright [
   var min_position;
   var max_position;
   
-  min_position = 64/180*Math.PI;
-  max_position = 255/180*Math.PI; 
-  position = 85/180*Math.PI;
+  min_position = 25/180*Math.PI;
+  max_position = 105/180*Math.PI; 
+  position = 30/180*Math.PI;
   anchor = fields.anchor_center.value;
   axis = fields.x_axis.value;
 >%

@@ -1,8 +1,8 @@
 from math import radians
 
 
-REPLICA_DECOUPLING_ANGLE = radians(70)
-STATUETTE_DECOUPLING_ANGLE = radians(150)
+REPLICA_DECOUPLING_ANGLE = radians(75)
+STATUETTE_DECOUPLING_ANGLE = radians(160)
 
 
 class WebotsStatuetteDriver:

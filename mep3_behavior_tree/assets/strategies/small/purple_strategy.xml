@@ -4,7 +4,8 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <SequenceStar>
-            <Navigate goal="0.2;0.2;30" />
+            <Navigate goal="1.1991;-0.2;0" />
+            <Wait duration="30" />
             <SubTree ID="MovingExample" __shared_blackboard="true" />
             <Wait duration="2.0" name="Wait small purple two main strategy" />
             <Wait duration="2.0" name="Wait small purple three main strategy" />

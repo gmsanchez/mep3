@@ -1,7 +1,7 @@
 from math import radians
 
 
-REPLICA_DECOUPLING_ANGLE = 70   # degrees
+REPLICA_DECOUPLING_ANGLE = 75  # degrees
 
 
 class WebotsReplicaDriver:
