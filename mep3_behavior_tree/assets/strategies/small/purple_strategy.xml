@@ -2,13 +2,18 @@
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
         <Sequence>
-            <WaitMatchStart state="2" />
+            <WaitMatchStart state="1" />
             <DefaultTeamColor color="purple" />
 
             <AddObstacle label="initial1" polygon="0.54;0.40|0.67;0.40|0.67;0.2|0.54;0.2" />
             <AddObstacle label="initial2" polygon="0.532;-0.27|0.6;-0.45|0.44;-0.45" />
+            <Wait duration="0.7"/>
             <!-- <Navigate goal="-0.8;0.0;0" /> -->
-            <Navigate goal="0.2;0.5;180.0" />
+            <PoseToFullPose pose="0.2;0.5;180.0" full_pose="{goal}" />
+            <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" />
+            
+            <WaitMatchStart state="2" />
+            <FollowPath path="{path}" controller_id="FollowPath" />
 
             <Wait duration="10000000.0" name="Wait forever as small robot" />
         </Sequence>

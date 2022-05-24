@@ -3,19 +3,22 @@
     <BehaviorTree ID="BehaviorTree">
     
         <Sequence>
-            <WaitMatchStart state="2" />
+            <WaitMatchStart state="1" />
+            <AddObstacle label="initial1" polygon="0.54;0.40|0.67;0.40|0.67;0.2|0.54;0.2" />
+            <AddObstacle label="initial2" polygon="0.532;-0.27|0.6;-0.45|0.44;-0.45" />
+            <Wait duration="0.7"/>
+
+            <!-- <Navigate goal="-0.8;0.0;0" /> -->
             
-            <SequenceStar>
-        
+            <PoseToFullPose pose="0;-0.7;0" full_pose="{goal}" />
+            <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" />
+            <WaitMatchStart state="2" />
+            <FollowPath path="{path}" controller_id="FollowPath" />
 
-                <AddObstacle label="initial1" polygon="0.6;0.45|0.67;0.325|0.6;0.2" />
-                <AddObstacle label="initial2" polygon="0.532;-0.16|0.6;-0.45|0.44;-0.45" />
-                <!-- <Navigate goal="-0.8;0.0;0" /> -->
-                
+            <Wait duration="100000.0" name="Wait one big purple main strategy" />
 
-                <Wait duration="100000.0" name="Wait one big purple main strategy" />
-                <RemoveObstacle label="initial1" /> 
-            </SequenceStar>
+            <RemoveObstacle label="initial1" /> 
+
         </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
