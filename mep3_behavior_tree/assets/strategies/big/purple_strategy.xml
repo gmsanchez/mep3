@@ -3,13 +3,13 @@
     <BehaviorTree ID="BehaviorTree">
         <WaitMatchStart state="2" />
         <SequenceStar>
-            <Wait duration="5" />
-            <PreciseNavigate goal="0.599102;-0.401;0"/>
-            <Wait duration="30" />
-	    
-            <Wait duration="5.0" name="Wait one small purple main strategy" />
-            <Navigate goal="1.2491;0.489;180" />
+            <AddObstacle label="initial" polygon="0.6;0.45|0.67;0.325|0.6;0.2" />
+            <AddObstacle label="initial" polygon="0.532;0.0|0.6;-0.45|0.44;-0.45" />
+            <!-- <Navigate goal="-0.8;0.0;0" /> -->
+            
+
             <Wait duration="100000.0" name="Wait one big purple main strategy" />
+            <RemoveObstacle label="initial" /> 
         </SequenceStar>
     </BehaviorTree>
     <!-- ////////// -->
