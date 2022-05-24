@@ -16,17 +16,10 @@ from launch.conditions import IfCondition
 from launch.substitutions import PathJoinSubstitution
 
 INITIAL_POSE_MATRIX = [
-<<<<<<< HEAD
     ('small', 'purple', [1.2755, 0.44, -pi]),  # KOSTA
     ('big', 'purple', [1.2491, 0.102, pi/2]),  # FLORIAN
     ('small', 'yellow', [-1.2755, 0.44, 0]),  # KOSTA
     ('big', 'yellow', [-1.2491, 0.102, pi / 2]),  # FLORIAN
-=======
-    ('small', 'purple', [1.2755, 0.443, pi]),
-    ('big', 'yellow', [-1.236, 0.162, -pi / 2]),
-    ('big', 'purple', [1.249, 0.491, pi/2]),
-    ('small', 'yellow', [-1.242, 0.452, pi/2]),
->>>>>>> origin/main
 ]
 
 PREDEFINED_TABLE_NAMES = [
