@@ -20,6 +20,10 @@ INITIAL_POSE_MATRIX = [
     ('big', 'purple', [1.2491, 0.492, pi/2]),  # FLORIAN
     ('small', 'yellow', [-1.2755, 0.44, 0]),  # KOSTA
     ('big', 'yellow', [-1.2491, 0.102, pi / 2]),  # FLORIAN
+    # ('small', 'purple', [1.2755, 0.443, pi]),
+    # ('big', 'yellow', [-1.236, 0.162, -pi / 2]),
+    # ('big', 'purple', [1.249, 0.491, pi/2]),
+    # ('small', 'yellow', [-1.2755, 0.443, 0]),
 ]
 
 PREDEFINED_TABLE_NAMES = [
@@ -28,19 +32,27 @@ PREDEFINED_TABLE_NAMES = [
 ]
 
 ANGLE_MIRRORING_BLACKLIST = [
+    # Florian (big)
     'box',
     'flipper_left',
     'flipper_right',
+    # Kosta (small)
     'base',
     'mid',
-    'gripper'
+    'gripper',
+    'rail'
 ]
 
 SERVER_NAME_MIRRORING_BLACKLIST = [
+    # Florian (big)
     'box',
+    # Kosta (small)
     'base',
     'mid',
-    'gripper'
+    'gripper',
+    'rail',
+    'fork_left',
+    'fork_right'
 ]
 
 def verify_color(context, *args, **kwargs):
