@@ -16,12 +16,39 @@ from launch.conditions import IfCondition
 from launch.substitutions import PathJoinSubstitution
 
 INITIAL_POSE_MATRIX = [
+<<<<<<< HEAD
     ('small', 'purple', [1.2755, 0.44, -pi]),  # KOSTA
     ('big', 'purple', [1.2491, 0.102, pi/2]),  # FLORIAN
     ('small', 'yellow', [-1.2755, 0.44, 0]),  # KOSTA
     ('big', 'yellow', [-1.2491, 0.102, pi / 2]),  # FLORIAN
+=======
+    ('small', 'purple', [1.2755, 0.443, pi]),
+    ('big', 'yellow', [-1.236, 0.162, -pi / 2]),
+    ('big', 'purple', [1.249, 0.491, pi/2]),
+    ('small', 'yellow', [-1.242, 0.452, pi/2]),
+>>>>>>> origin/main
 ]
 
+PREDEFINED_TABLE_NAMES = [
+    'table1',
+    'table2'
+]
+
+ANGLE_MIRRORING_BLACKLIST = [
+    'box',
+    'flipper_left',
+    'flipper_right',
+    'base',
+    'mid',
+    'gripper'
+]
+
+SERVER_NAME_MIRRORING_BLACKLIST = [
+    'box',
+    'base',
+    'mid',
+    'gripper'
+]
 
 def verify_color(context, *args, **kwargs):
     if LaunchConfiguration('color').perform(context) \
@@ -122,6 +149,9 @@ def generate_launch_description():
             'color': color,
             'table': table,
             'strategy': strategy,
+            'predefined_tables': PREDEFINED_TABLE_NAMES,
+            'mirror_angle_blacklist': ANGLE_MIRRORING_BLACKLIST,
+            'mirror_name_blacklist': SERVER_NAME_MIRRORING_BLACKLIST
         }],
         namespace=namespace,
         condition=launch.conditions.IfCondition(use_behavior_tree))
@@ -180,8 +210,8 @@ def generate_launch_description():
     laser_inflator = Node(package='mep3_navigation',
                           executable='laser_inflator',
                           parameters=[{
-                              'inflation_radius': 0.05,
-                              'inflation_angular_step': 0.09
+                              'inflation_radius': 0.15,
+                              'inflation_angular_step': 0.12
                           }],
                           remappings=[('/tf_static', 'tf_static'),
                                       ('/tf', 'tf'),

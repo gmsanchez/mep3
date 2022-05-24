@@ -16,10 +16,12 @@
 #define MEP3_BEHAVIOR_TREE__DYNAMIXEL_COMMAND_ACTION_HPP_
 
 #include <string>
+#include <iostream>
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
 #include "mep3_behavior_tree/bt_action_node.hpp"
+#include "mep3_behavior_tree/table_specific_ports.hpp"
 #include "mep3_behavior_tree/team_color_strategy_mirror.hpp"
 #include "mep3_msgs/action/dynamixel_command.hpp"
 
@@ -43,10 +45,24 @@ public:
 
   static BT::PortsList providedPorts()
   {
-    return providedBasicPorts(
-      {BT::InputPort<_Float64>("position"), BT::InputPort<_Float64>("velocity"),
-        BT::InputPort<_Float64>("tolerance"), BT::InputPort<_Float64>("timeout"),
-        BT::OutputPort<int8_t>("result")});
+    // Static parameters
+    BT::PortsList port_list = providedBasicPorts({
+      BT::InputPort<_Float64>("position"),
+      BT::InputPort<_Float64>("velocity"),
+      BT::InputPort<_Float64>("tolerance"),
+      BT::InputPort<_Float64>("timeout"),
+      BT::InputPort<std::string>("mirror"),
+      BT::OutputPort<int8_t>("result")
+    });
+
+    // Dynamic parameters
+    for (std::string table : g_InputPortNameFactory.get_names()) {
+      port_list.insert(
+        BT::InputPort<_Float64>("position_" + table)
+      );
+    }
+
+    return port_list;
   }
 };
 
@@ -62,17 +78,24 @@ void DynamixelCommandAction::on_tick()
   if (!getInput("timeout", timeout))
     timeout = 5;
 
-  if (g_StrategyMirror.server_name_requires_mirroring(action_name_)) {
-    g_StrategyMirror.remap_server_name(action_name_);
-    g_StrategyMirror.mirror_angle(position, true);
+  std::string table = config().blackboard->get<std::string>("table");
+  _Float64 position_offset;
+  if (table.length() > 0 && getInput("position_" + table, position_offset)) {
+    position += position_offset;
+    std::cout << "Position offset for '" << action_name_ \
+              << "' on table '" << table << "' detected" << std::endl;
   }
 
-  // ovo je testirano za small, mozda treba obrisati
-  if (g_StrategyMirror.server_name_requires_mirroring1(action_name_)) {
+  std::string mirror;
+  getInput("mirror", mirror);
+
+  if (g_StrategyMirror.server_name_requires_mirroring(action_name_, mirror)) {
     g_StrategyMirror.remap_server_name(action_name_);
-    g_StrategyMirror.mirror_angle(position, true);
   }
 
+  if (g_StrategyMirror.angle_requires_mirroring(action_name_, mirror)) {
+    g_StrategyMirror.invert_angle(position);
+  }
 
   goal_.position = position;
   goal_.velocity = velocity;

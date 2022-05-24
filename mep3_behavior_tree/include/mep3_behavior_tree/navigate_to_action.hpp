@@ -17,11 +17,13 @@
 
 #include <string>
 #include <cmath>
+#include <iostream>
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
 #include "mep3_behavior_tree/bt_action_node.hpp"
 #include "mep3_behavior_tree/pose_2d.hpp"
+#include "mep3_behavior_tree/table_specific_ports.hpp"
 #include "mep3_behavior_tree/team_color_strategy_mirror.hpp"
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 
@@ -42,9 +44,21 @@ namespace mep3_behavior_tree
 
     static BT::PortsList providedPorts()
     {
-      return {
-          BT::InputPort<BT::Pose2D>("goal"),
-          BT::InputPort<std::string>("behavior_tree")};
+      // Static parameters
+      BT::PortsList port_list = providedBasicPorts({
+        BT::InputPort<BT::Pose2D>("goal"),
+        BT::InputPort<std::string>("mirror"),
+        BT::InputPort<std::string>("behavior_tree")
+      });
+
+      // Dynamic parameters
+      for (std::string table : g_InputPortNameFactory.get_names()) {
+        port_list.insert(
+          BT::InputPort<BT::Pose2D>("goal_" + table)
+        );
+      }
+
+      return port_list;
     }
   };
 
@@ -55,7 +69,24 @@ namespace mep3_behavior_tree
     getInput("goal", goal);
     getInput("behavior_tree", behavior_tree);
 
-    g_StrategyMirror.mirror_pose(goal);
+    std::string table = config().blackboard->get<std::string>("table");
+    BT::Pose2D goal_offset;
+    if (table.length() > 0 && getInput("goal_" + table, goal_offset)) {
+      std::cout << "Navigation goal offset for table '" \
+                << table << "' detected" << std::endl;
+      goal += goal_offset;
+    }
+
+    std::string mirror;
+    getInput("mirror", mirror);
+
+    if (g_StrategyMirror.requires_mirroring(mirror)) {
+      g_StrategyMirror.mirror_pose(goal);
+    }
+
+    std::cout << "Navigating to x=" << goal.x \
+              << " y=" << goal.y \
+              << " θ=" << goal.theta << "°" << std::endl;
 
     goal_.pose.header.frame_id = "map";
     goal_.pose.header.stamp = node_->get_clock()->now();
@@ -75,7 +106,7 @@ namespace mep3_behavior_tree
 
   BT::NodeStatus NavigateToAction::on_success()
   {
-    std::cout << "Navigation succesful " << std::endl;
+    std::cout << "Navigation succesful" << std::endl;
 
     return BT::NodeStatus::SUCCESS;
   }

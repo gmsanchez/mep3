@@ -1,6 +1,7 @@
 <root main_tree_to_execute="BehaviorTree">
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
+        <WaitMatchStart state="2" />
         <SequenceStar>
             <Wait duration="5" />
             <PreciseNavigate goal="0.599102;-0.401;0"/>

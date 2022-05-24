@@ -1,8 +1,7 @@
 <root main_tree_to_execute="BehaviorTree">
-    <include path="../../tasks/example_moving.xml" />
-    <include path="../../tasks/example_scoreboard.xml" />
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
+<<<<<<< HEAD
         <SequenceStar>
             <Navigate goal="1.1991;-0.2;0" />
             <Wait duration="30" />
@@ -12,6 +11,13 @@
             <SubTree ID="ScoreboardExample" __shared_blackboard="true" />
             <Wait duration="2.0" name="Wait small purple four main strategy" />
         </SequenceStar>
+=======
+        <Sequence>
+            <WaitMatchStart state="2" />
+            <DefaultTeamColor color="purple" />
+            <Wait duration="10000000.0" name="Wait forever as small robot" />
+        </Sequence>
+>>>>>>> origin/main
     </BehaviorTree>
     <!-- ////////// -->
 </root>
