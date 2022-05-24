@@ -69,7 +69,7 @@ controller_server:
     # Goal checker parameters
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.04
+      xy_goal_tolerance: 0.05
       yaw_goal_tolerance: 0.045
       stateful: true
     # Controller parameters
@@ -98,6 +98,7 @@ controller_server:
       allow_reversing: true
       use_rotate_to_heading: false
       use_rotate_to_goal: true
+      kp_angle: 6.0
       rotate_to_heading_min_angle: 0.785
       max_angular_accel: 6.0
       cost_scaling_dist: 0.7
@@ -178,7 +179,7 @@ local_costmap:
       rolling_window: True
       width: 3
       height: 3
-      resolution: 0.01
+      resolution: 0.02
       robot_radius: 0.17
       # footprint: "[ [0.1, 0.15], [0.1, -0.15], [-0.1, -0.15], [-0.1, 0.15] ]"
       plugins: ["obstacle_layer", "inflation_layer"]
@@ -213,7 +214,7 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: True
-      robot_radius: 0.2
+      robot_radius: 0.17
       resolution: 0.02
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "temporal_obstacle_layer", "inflation_layer"]
@@ -270,7 +271,7 @@ planner_server:
       use_astar: True
       allow_unknown: false
       use_final_approach_orientation: False
-      tolerance: 0.005
+      tolerance: 0.05
     _GridBased:
       plugin: "nav2_smac_planner/SmacPlanner2D"
       tolerance: 0.02

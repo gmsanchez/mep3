@@ -10,12 +10,15 @@
 
             <!-- <Navigate goal="-0.8;0.0;0" /> -->
             
-            <PoseToFullPose pose="0;-0.7;0" full_pose="{goal}" />
-            <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased" />
             <WaitMatchStart state="2" />
-            <FollowPath path="{path}" controller_id="FollowPath" />
+            <!-- <Wait duration="5000000000.0"/> -->
+            <Wait duration="5.0"/>
+
+            <Navigate goal="0;-0.7;0" />
 
             <Wait duration="100000.0" name="Wait one big purple main strategy" />
+
+            <!-- <VacuumPump label="robot_left_connector" connect="1"/>	 -->
 
             <RemoveObstacle label="initial1" /> 
 

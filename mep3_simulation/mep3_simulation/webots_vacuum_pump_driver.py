@@ -49,12 +49,12 @@ class WebotsVacuumPumpDriver:
             f'webots_vacuum_pump_driver_{connector_name}')
         self.__robot = webots_node.robot
         self.__connector = self.__robot.getDevice(f'{connector_name}')
-        self.__distance_sensor = self.__robot.getDevice(
-            f'{connector_name}_distance_sensor'
-        )
+        # self.__distance_sensor = self.__robot.getDevice(
+        #     f'{connector_name}_distance_sensor'
+        # )
         timestep = int(self.__robot.getBasicTimeStep())
         self.__connector.enablePresence(timestep)
-        self.__distance_sensor.enable(timestep)
+        # self.__distance_sensor.enable(timestep)
 
         self.__motor_action = ActionServer(
             WebotsUserDriver.get().node,
@@ -73,6 +73,7 @@ class WebotsVacuumPumpDriver:
 
     async def __execute_callback(self, goal_handle):
         goal_handle.succeed()
+        result = VacuumPumpCommand.Result()
         return result
 
         connect = goal_handle.request.connect
