@@ -1,16 +1,22 @@
 <root main_tree_to_execute="BehaviorTree">
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
-        <WaitMatchStart state="2" />
-        <SequenceStar>
-            <AddObstacle label="initial" polygon="0.6;0.45|0.67;0.325|0.6;0.2" />
-            <AddObstacle label="initial" polygon="0.532;0.0|0.6;-0.45|0.44;-0.45" />
-            <!-- <Navigate goal="-0.8;0.0;0" /> -->
+    
+        <Sequence>
+            <WaitMatchStart state="2" />
             
+            <SequenceStar>
+        
 
-            <Wait duration="100000.0" name="Wait one big purple main strategy" />
-            <RemoveObstacle label="initial" /> 
-        </SequenceStar>
+                <AddObstacle label="initial1" polygon="0.6;0.45|0.67;0.325|0.6;0.2" />
+                <AddObstacle label="initial2" polygon="0.532;-0.16|0.6;-0.45|0.44;-0.45" />
+                <!-- <Navigate goal="-0.8;0.0;0" /> -->
+                
+
+                <Wait duration="100000.0" name="Wait one big purple main strategy" />
+                <RemoveObstacle label="initial1" /> 
+            </SequenceStar>
+        </Sequence>
     </BehaviorTree>
     <!-- ////////// -->
 </root>

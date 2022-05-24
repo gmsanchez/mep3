@@ -1,23 +1,17 @@
 <root main_tree_to_execute="BehaviorTree">
     <!-- ////////// -->
     <BehaviorTree ID="BehaviorTree">
-<<<<<<< HEAD
-        <SequenceStar>
-            <Navigate goal="1.1991;-0.2;0" />
-            <Wait duration="30" />
-            <SubTree ID="MovingExample" __shared_blackboard="true" />
-            <Wait duration="2.0" name="Wait small purple two main strategy" />
-            <Wait duration="2.0" name="Wait small purple three main strategy" />
-            <SubTree ID="ScoreboardExample" __shared_blackboard="true" />
-            <Wait duration="2.0" name="Wait small purple four main strategy" />
-        </SequenceStar>
-=======
         <Sequence>
             <WaitMatchStart state="2" />
             <DefaultTeamColor color="purple" />
+
+            <AddObstacle label="initial1" polygon="0.54;0.40|0.67;0.40|0.67;0.2|0.54;0.2" />
+            <AddObstacle label="initial2" polygon="0.532;-0.27|0.6;-0.45|0.44;-0.45" />
+            <!-- <Navigate goal="-0.8;0.0;0" /> -->
+            <Navigate goal="0.2;0.5;180.0" />
+
             <Wait duration="10000000.0" name="Wait forever as small robot" />
         </Sequence>
->>>>>>> origin/main
     </BehaviorTree>
     <!-- ////////// -->
 </root>
