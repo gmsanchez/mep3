@@ -43,7 +43,8 @@ namespace mep3_behavior_tree
       getInput("behavior_tree", this->behavior_tree);
 
       // Warning: might break for a still undetermined reason
-      std::string table = this->config().blackboard->get<std::string>("table");
+      //std::string table = this->config().blackboard->get<std::string>("table");
+      std::string table = "table1";
       BT::Pose2D goal_offset;
       if (table.length() > 0 && getInput("goal_" + table, goal_offset)) {
         goal += goal_offset;
