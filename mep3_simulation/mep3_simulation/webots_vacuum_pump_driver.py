@@ -53,7 +53,7 @@ class WebotsVacuumPumpDriver:
         #     f'{connector_name}_distance_sensor'
         # )
         timestep = int(self.__robot.getBasicTimeStep())
-        self.__connector.enablePresence(timestep)
+        # self.__connector.enablePresence(timestep)
         # self.__distance_sensor.enable(timestep)
 
         self.__motor_action = ActionServer(

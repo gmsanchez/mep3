@@ -35,7 +35,7 @@
 
         <plugin type="mep3_simulation.webots_vacuum_pump_driver.WebotsVacuumPumpDriver">
             <namespace>small</namespace>
-            <connectorName>gripper_connector</connectorName>
+            <connectorName>arm_connector</connectorName>
         </plugin>
 
         <plugin type="mep3_simulation.webots_cinch_driver.WebotsCinchDriver" />

@@ -1,5 +1,6 @@
 from math import radians
 import time
+import asyncio
 
 from mep3_msgs.action import DynamixelCommand
 from mep3_simulation import WebotsUserDriver
@@ -58,6 +59,9 @@ class WebotsDynamixelDriver:
     async def __execute_callback(self, goal_handle):
         # Return sucesss
         result = DynamixelCommand.Result()
+
+        asyncio.sleep(0.5)
+
         goal_handle.succeed()
         result.result = 0
         return result

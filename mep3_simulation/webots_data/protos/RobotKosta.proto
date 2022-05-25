@@ -40,6 +40,8 @@ Robot {
 				Fork_left{}
 				Fork_right{}
 				Slider{}
+				Hand{}
+				
 			]
 		}
 		Wheel {}

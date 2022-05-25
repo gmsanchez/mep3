@@ -4,16 +4,22 @@
         <SequenceStar>
 
             <WaitMatchStart state="1"/>
+            <AddObstacle label="initial_static" polygon="0.54;0.40|0.67;0.40|0.67;0.2|0.54;0.2" />
+            <AddObstacle label="initial_random" polygon="0.532;-0.27|0.6;-0.45|0.44;-0.45" />
+            <Wait duration="0.7"/>
+
 
             <Motion command="forward" velocity_linear="0.5" acceleration_linear="0.5" velocity_angular="6.0" acceleration_angular="8.0" value="0" />
             <SubTree ID="skill_retract_hands" __shared_blackboard="true" />
 
             <WaitMatchStart state="2"/>
                 
+
             <TaskSequence>
+
+                <SubTree ID="task_replica_and_statuette" __shared_blackboard="true" />
                 
                 <SubTree ID="task_excavation_squares" __shared_blackboard="true" />
-                <SubTree ID="task_replica_and_statuette" __shared_blackboard="true" />
                 <SubTree ID="task_collect_and_deploy_static_pucks" __shared_blackboard="true"/> 
             </TaskSequence>
         </SequenceStar>
@@ -46,8 +52,8 @@
     <BehaviorTree ID="task_collect_and_deploy_static_pucks">
 	<Sequence>
         	<!-- <SubTreePlus ID="SafePreciseNavigate" goal="0.620;0.710;-90" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /> -->
-            <SubTreePlus ID="SafePreciseNavigate" goal="0.64;0.710;-90" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
-
+            <!-- <SubTreePlus ID="SafePreciseNavigate"  type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /> -->
+            <Navigate goal="0.64;0.710;-90" />
 	        <Parallel failure_threshold="1" success_threshold="2">
 			    <!-- <Dynamixel label="flipper_right" position="295"/> -->
 			    <!-- <Dynamixel label="flipper_left" position="0"/> -->
@@ -63,6 +69,8 @@
 			    <!-- <Dynamixel label="flipper_left" position="41"/> -->
                 <Dynamixel label="flipper_left" position="50"/>
 		    </Parallel>
+
+            <RemoveObstacle label="initial_random" />
 
         	<!-- <Navigate goal="1.05;-0.55;-45"/> -->
             <Navigate goal="1.030;-0.520;-45"/>
@@ -106,11 +114,11 @@
     <!-- ////////// -->
     <!-- ////////// -->
     <BehaviorTree ID="skill_retract_hands">
-        <Parallel failure_threshold="1" success_threshold="9">
+        <Parallel failure_threshold="1" success_threshold="7">
             <Dynamixel label="flipper_right" velocity="50" position="151" />
             <Dynamixel label="flipper_left" velocity="50" position="146" />
-            <Dynamixel label="front_right" velocity="50" position="247" />
-            <Dynamixel label="front_left" velocity="50" position="140" />
+            <!-- <Dynamixel label="front_right" velocity="50" position="247" />
+            <Dynamixel label="front_left" velocity="50" position="140" /> -->
             <Dynamixel label="box" velocity="50" position="150" />
             <Dynamixel label="measure_left" velocity="50" position="267" />
             <Dynamixel label="measure_right"  velocity="50" position="30" />
@@ -124,9 +132,10 @@
         	<Sequence>
         	    <SubTree ID="skill_retract_hands" __shared_blackboard="true" />
         	    
-                <SubTreePlus ID="SafePreciseNavigate" goal="0.700;-0.100;150" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
+                <!-- <SubTreePlus ID="SafePreciseNavigate" goal="0.700;-0.100;150" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /> -->
 
-        	    <SubTreePlus ID="SafePreciseNavigate" goal="-0.300;-0.800;150" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
+                <Navigate goal="-0.300;-0.800;150" />
+        	    <!-- <SubTreePlus ID="SafePreciseNavigate" goal="-0.300;-0.800;150" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /> -->
                 
                 <!-- Priprema -->
                 <!--NavigateThrough goal="1.049;-0.07;180|0.539;-0.089;150|0.079;-0.089;150|-0.071;-0.408;150|-0.300;-0.800;150"/-->
@@ -200,8 +209,10 @@
             <!--Navigate behavior_tree="" goal="1;-0.45;60" /-->
             <!-- <SubTreePlus ID="SafePreciseNavigate" goal="1.050;-0.316;75" type="backward" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /> -->
             <Sequence>
-                <SubTreePlus ID="SafePreciseNavigate" goal="1.050;-0.550;165" type="backward" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
+                <!-- <SubTreePlus ID="SafePreciseNavigate" goal="1.050;-0.550;165" type="backward" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /> -->
                 <!--PreciseNavigate behavior_tree="backward" goal="1.05;-0.55;135" /-->
+                <Navigate goal="1.050;-0.550;135" />
+                
                 <ForceSuccess>
                     <PreciseNavigate behavior_tree="backward" goal="1.165;-0.665;135" />
                 </ForceSuccess>

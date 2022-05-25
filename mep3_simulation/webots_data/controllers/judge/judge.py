@@ -59,8 +59,8 @@ def main():
         statuette.set_position(x=-1.267, y=-0.768, z=0.125, theta=0.785)
         replica.set_position(x=-1.2621, y=0.14369, z=0.1579, theta=pi/2)
     else:
-        # robot_big.set_position(x=1.2491, y=0.102, theta=pi / 2)
-        # robot_small.set_position(x=1.2755, y=0.44, theta=-pi)
+        robot_big.set_position(x=1.2491, y=0.102, theta=pi / 2)
+        robot_small.set_position(x=1.2755, y=0.44, theta=-pi)
         robot_opponent_big.set_position(x=-1.26, y=0.46, theta=0)
         robot_opponent_small.set_position(x=-1.26, y=0.128, theta=0)
 

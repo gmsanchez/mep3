@@ -56,7 +56,7 @@ Transform {
 						
 					}
 					Connector {
-						name "gripper_connector"
+						name "arm_connector"
 						translation 0.0645 0.0893 0.11626
 						rotation 0 1 0 1.5708
 						type "active"
