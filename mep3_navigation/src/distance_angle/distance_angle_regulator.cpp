@@ -390,17 +390,17 @@ void DistanceAngleRegulator::control_loop()
       current_pose_2d.theta = map_robot_angle_;
 
       geometry_msgs::msg::Twist project_command = motor_command;
-      if (project_command.linear.x < 0.05) {
-        project_command.linear.x = 0.2;
+      if (std::abs(project_command.linear.x) < 0.05) {
+        project_command.linear.x = 0.2 * sgn(project_command.linear.x);
       }
 
       bool is_collision_ahead = false;
 
-      const double projection_time = 0.02 / project_command.linear.x;
+      const double projection_time = 0.02 / std::abs(project_command.linear.x);
 
       int project_cnt = 1;
       while (true) {
-        if (project_cnt * projection_time >= 0.7) {
+        if (project_cnt * projection_time >= 0.55) {
           break;
         }
 

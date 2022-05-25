@@ -11,7 +11,8 @@
             <ForceSuccess>
                 <Timeout msec="100000">
 
-                    <Sequence>
+		<TaskSequence>
+                  <SequenceStar>
 
                             
                         <SubTreePlus ID="SafePreciseNavigate" goal="0.915;0.45;180" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
@@ -25,7 +26,8 @@
 
                         <Wait duration="10000.0" />
 
-                    </Sequence>
+                    </SequenceStar>
+		  </TaskSequence>
                 </Timeout>
             </ForceSuccess>
 
@@ -38,12 +40,13 @@
     <BehaviorTree ID="SafePreciseNavigate">
         <SequenceStar>
             <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap" />
+	    <Wait duration="0.2" />
             <RecoveryNode number_of_retries="10" name="FollowPath">
                 <PreciseNavigate goal="{goal}" behavior_tree="{type}" />
                 <Sequence>
-                    <Wait duration="1.0" />
+                    <Wait duration="0.2" />
                     <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap" />
-                    <Wait duration="0.5" />
+                    <Wait duration="1.5" />
                 </Sequence>
             </RecoveryNode>
         </SequenceStar>
