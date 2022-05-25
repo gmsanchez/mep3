@@ -23,6 +23,9 @@
                         <SubTreePlus ID="SafePreciseNavigate" goal="0.195;0.219;0" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
                         <SubTreePlus ID="SafePreciseNavigate" goal="1.05;0.219;0" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
 
+	                <ScoreboardTask points="24" task="task_excavation_squares"/>
+
+
                         <Wait duration="10000.0" />
                     </Sequence>
                 </Timeout>
