@@ -400,7 +400,7 @@ void DistanceAngleRegulator::control_loop()
 
       int project_cnt = 1;
       while (true) {
-        if (project_cnt * projection_time >= 0.5) {
+        if (project_cnt * projection_time >= 0.7) {
           break;
         }
 
