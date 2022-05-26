@@ -84,7 +84,7 @@
 
         	<!-- <Navigate goal="1.05;-0.55;-45"/> -->
             <Navigate goal="1.030;-0.520;-45"/>
-            <PreciseNavigate goal="1.060;-0.550;-45"/>
+            <PreciseNavigate goal="1.070;-0.560;-45"/>
             <!-- <NavigateThrough goal="1.07;-0.55;-45|"/> -->
 
 	        <Motion value="0.15" command="forward"/>
