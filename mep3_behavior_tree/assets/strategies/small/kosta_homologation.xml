@@ -13,6 +13,7 @@
 
 		<TaskSequence>
                   <SequenceStar>
+		        <Wait duration="4.0" />
 
                             
                         <SubTreePlus ID="SafePreciseNavigate" goal="0.915;0.45;180" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
