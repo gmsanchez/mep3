@@ -17,8 +17,8 @@
 
 		  <TaskSequence>
                     <SequenceStar>
-                        <Wait duration="2.0"/>
 
+                        <SubTreePlus ID="SafePreciseNavigate" goal="1.249;-0.050;180" type="backward_safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
                         <!-- <Wait duration="5000000000.0"/> -->
                         <SubTreePlus ID="SafePreciseNavigate" goal="0.38;-0.101;180" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
                         <SubTreePlus ID="SafePreciseNavigate" goal="0.195;0.219;0" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />

@@ -42,6 +42,8 @@ ANGLE_MIRRORING_BLACKLIST = [
 SERVER_NAME_MIRRORING_BLACKLIST = [
     # Florian (big)
     'box',
+    'flipper_left',
+    'flipper_right',
     # Kosta (small)
     'base',
     'mid',
