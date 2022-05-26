@@ -51,7 +51,7 @@
 
 		    <Navigate goal="0.226;0.58;90"/>	
 
-		    <Motion command="forward" velocity_linear="1.4" acceleration_linear="0.7" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
+		    <Motion command="forward" velocity_linear="1.4" acceleration_linear="0.6" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
 		    <SubTree ID="collect_from_dispenser_middle_ours" __shared_blackboard="true" />
 
 		    <Wait duration="3.0" />
@@ -294,7 +294,7 @@
 	
 	    <Parallel success_threshold="1" failure_threshold="3">     
 		    <Dynamixel label="mid" position="30" velocity="250"/>
-		    <Dynamixel label="gripper" position="170" velocity="250"/>
+		    <Dynamixel label="gripper" position="159" velocity="250"/>
 		    <Dynamixel label="base" position="67" velocity="250"/>
 	 	    <Dynamixel label="rail" position="120" velocity="250"/>
 	    </Parallel>
@@ -395,7 +395,7 @@
 
 	    <Motion command="forward" value="0" velocity_linear="1.0" acceleration_linear="0.4" /> 
 	    <ForceSuccess>
-		    <Motion command="forward_stuck" value="0.05" /> 
+		    <Motion command="forward_stuck" value="0.03" /> 
             </ForceSuccess>
 	    <Motion command="forward" value="0" velocity_linear="1.4" acceleration_linear="1.0" /> 
 
@@ -412,7 +412,7 @@
     <BehaviorTree ID="collect_from_dispenser_only_ours">
         <Sequence>
 
-	    <Navigate goal="1.100;-0.330;0"/>
+	    <SubTreePlus ID="SafePreciseNavigate" goal="1.100;-0.330;0" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
 	    <PreciseNavigate goal="1.120;-0.330;0"/>
 	    <Parallel failure_threshold="1" success_threshold="2">
 		    <PreciseNavigate goal="1.220;-0.330;0"/>
@@ -423,11 +423,12 @@
 
 	    <Motion command="forward" value="0" velocity_linear="1.0" acceleration_linear="0.4" /> 
 	    <ForceSuccess>
-		    <Motion command="forward_stuck" value="0.04" /> 
+		    <Motion command="forward_stuck" value="0.03" /> 
             </ForceSuccess>
 	    <Motion command="forward" value="0" velocity_linear="1.4" acceleration_linear="1.0" /> 
 
 	    <Dynamixel label="fork_left" position="183" velocity="150"/>
+    	    <ScoreboardTask points="3" task="taken_from_only_ours"/>
 	    <Motion command="forward" value="-0.13" /> 
 	
         </Sequence>
@@ -496,7 +497,7 @@
 
 	    <SubTree ID="skill_retract_hands" __shared_blackboard="true" />
 
-	    <PreciseNavigate goal="1.34;0.730;30"/>
+	    <PreciseNavigate goal="1.34;0.730;15"/>
 
         </Sequence>
     </BehaviorTree>
