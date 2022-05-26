@@ -77,8 +77,8 @@ controller_server:
     FollowPath:
       plugin: "mep3_navigation::RegulatedPurePursuitController"
       desired_linear_vel: 0.7
-      max_linear_accel: 0.7
-      max_linear_decel: 0.7
+      max_linear_accel: 0.6
+      max_linear_decel: 0.6
       max_linear_jerk: 99999.0
       max_angular_jerk: 99999.0
       lookahead_dist: 0.15

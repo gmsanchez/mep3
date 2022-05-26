@@ -43,6 +43,7 @@
 		    <Motion command="forward" velocity_linear="1.4" acceleration_linear="0.7" velocity_angular="15.0" acceleration_angular="15.0" value="0" />
 
 		    <SubTree ID="collect_from_dispenser_middle_ours" __shared_blackboard="true" />
+		    <Wait duration="7.0" />
 
 		    <SubTree ID="task_put_3_from_right_on_gallery" __shared_blackboard="true" />
 
@@ -524,7 +525,7 @@
 
 	    <SubTree ID="skill_retract_hands" __shared_blackboard="true" />
 
-	    <PreciseNavigate goal="1.200;0.755;0"/>
+	    <PreciseNavigate goal="1.34;0.730;30"/>
 
         </Sequence>
     </BehaviorTree>
