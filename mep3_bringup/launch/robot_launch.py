@@ -36,6 +36,8 @@ ANGLE_MIRRORING_BLACKLIST = [
     'base',
     'mid',
     'gripper',
+    'fork_left',
+    'fork_right',
     'rail'
 ]
 
@@ -46,9 +48,7 @@ SERVER_NAME_MIRRORING_BLACKLIST = [
     'base',
     'mid',
     'gripper',
-    'rail',
-    'fork_left',
-    'fork_right'
+    'rail'
 ]
 
 
