@@ -13,7 +13,7 @@
 	    <Wait duration="0.7" />
 
 
-	    <Motion command="forward" velocity_linear="1.4" acceleration_linear="1.0" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
+	    <Motion command="forward" velocity_linear="1.2" acceleration_linear="0.8" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
 
 	    <SubTree ID="skill_retract_hands" __shared_blackboard="true" />
 	    <PoseToFullPose pose="0.226;0.58;90" full_pose="{goal}" />
@@ -397,7 +397,7 @@
 	    <ForceSuccess>
 		    <Motion command="forward_stuck" value="0.03" /> 
             </ForceSuccess>
-	    <Motion command="forward" value="0" velocity_linear="1.4" acceleration_linear="1.0" /> 
+	    <Motion command="forward" value="0" velocity_linear="1.2" acceleration_linear="0.7" /> 
 
 
 	    <Dynamixel label="fork_left" position="183" velocity="150"/>
@@ -425,7 +425,7 @@
 	    <ForceSuccess>
 		    <Motion command="forward_stuck" value="0.03" /> 
             </ForceSuccess>
-	    <Motion command="forward" value="0" velocity_linear="1.4" acceleration_linear="1.0" /> 
+	    <Motion command="forward" value="0" velocity_linear="1.2" acceleration_linear="0.8" /> 
 
 	    <Dynamixel label="fork_left" position="183" velocity="150"/>
     	    <ScoreboardTask points="3" task="taken_from_only_ours"/>
