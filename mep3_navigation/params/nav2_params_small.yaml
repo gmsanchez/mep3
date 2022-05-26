@@ -77,14 +77,14 @@ controller_server:
     FollowPath:
       plugin: "mep3_navigation::RegulatedPurePursuitController"
       desired_linear_vel: 0.8
-      max_linear_accel: 0.8
-      max_linear_decel: 0.8
+      max_linear_accel: 0.7
+      max_linear_decel: 0.7
       max_linear_jerk: 99999.0
       max_angular_jerk: 99999.0
-      lookahead_dist: 0.2
+      lookahead_dist: 0.15
       min_lookahead_dist: 0.15
-      max_lookahead_dist: 0.6
-      lookahead_time: 0.75
+      max_lookahead_dist: 0.4
+      lookahead_time: 0.5
       rotate_to_heading_angular_vel: 15.0
       transform_tolerance: 0.1
       use_velocity_scaled_lookahead_dist: true
@@ -99,7 +99,7 @@ controller_server:
       use_rotate_to_heading: false
       use_rotate_to_goal: true
       rotate_to_heading_min_angle: 0.785
-      max_angular_accel: 15.0
+      max_angular_accel: 10.0
       cost_scaling_dist: 0.7
       cost_scaling_gain: 1.0
       inflation_cost_scaling_factor: 5.0
@@ -213,10 +213,10 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       use_sim_time: True
-      robot_radius: 0.2
+      robot_radius: 0.17
       resolution: 0.01
       track_unknown_space: true
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      plugins: ["static_layer", "obstacle_layer", "temporal_obstacle_layer", "inflation_layer"]
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
@@ -235,7 +235,12 @@ global_costmap:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 4.0
         inflation_radius: 1.0
+      temporal_obstacle_layer:
+        plugin: "mep3_navigation::TemporalObstacleLayer"
+        add_obstacle_topic: /small/add_obstacle
+        remove_obstacle_topic: /small/remove_obstacle
       always_send_full_costmap: True
+
   global_costmap_client:
     ros__parameters:
       use_sim_time: True

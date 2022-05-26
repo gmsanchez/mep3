@@ -5,6 +5,14 @@
             
             <WaitMatchStart state="1"/>
 
+	    <AddObstacle label="initial_static_three_purple" polygon="0.54;0.48|0.70;0.48|0.67;0.2|0.54;0.2" />
+            <AddObstacle label="initial_random_three_purple" polygon="0.532;-0.24|0.6;-0.45|0.44;-0.45" />
+	    <AddObstacle label="initial_static_three_yellow" polygon="0.-54;0.45|-0.67;0.45|-0.67;0.2|-0.54;0.2" />
+            <AddObstacle label="initial_random_three_yellow" polygon="0.-532;-0.24|-0.6;-0.45|-0.44;-0.45" />
+
+	    <Wait duration="0.7" />
+
+
 	    <Motion command="forward" velocity_linear="1.4" acceleration_linear="1.0" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
 
 	    <SubTree ID="skill_retract_hands" __shared_blackboard="true" />
@@ -17,12 +25,7 @@
 
 	            <!-- Ubrzaj kretanje za izlazak napred -->
 
-                    <PreciseNavigate goal="0.590;0.730;157"/>
-		    <!--SubTreePlus ID="SafePreciseNavigate" goal="0.590;0.730;157" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" /-->
-
-
-		    <SubTreePlus ID="SafePreciseNavigate" goal="0.226;0.400;90" type="safe" node="{node}" bt_loop_duration="{bt_loop_duration}" server_timeout="{server_timeout}" />
-
+	   	    <Navigate goal="0.226;0.58;90"/>	
 
 		    <Motion command="forward" velocity_linear="1.4" acceleration_linear="0.7" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
 		    <SubTree ID="collect_from_dispenser_middle_ours" __shared_blackboard="true" />
@@ -343,9 +346,8 @@
     <BehaviorTree ID="collect_from_dispenser_middle_ours">
         <Sequence>
 
-	    <PreciseNavigate goal="0.226;0.450;90"/>
 	    <Parallel failure_threshold="1" success_threshold="2">
-		    <PreciseNavigate goal="0.226;0.600;90"/>
+		    <PreciseNavigate goal="0.226;0.65;90"/>
 		    <Dynamixel label="fork_left" position="85" velocity="540"/>
 	    </Parallel>
 	    
