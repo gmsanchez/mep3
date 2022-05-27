@@ -400,17 +400,19 @@
         <Sequence>
 
 	    <PreciseNavigate goal="1.120;-0.326;0"/>
-	    <Parallel failure_threshold="1" success_threshold="2">
-		    <PreciseNavigate goal="1.220;-0.326;0"/>
-		    <Dynamixel label="fork_left" position="85" velocity="450"/>
-	    </Parallel>
-	    
+	    <Dynamixel label="rail" position="115" velocity="150"/>
+		
+		<Dynamixel label="fork_left" position="85" velocity="450"/>
+		<!-- maybe remove one PreciseNavigate?-->
+		<PreciseNavigate goal="1.220;-0.326;0"/>
 	    <PreciseNavigate goal="1.276;-0.326;0"/>
 
-	    <Motion command="forward" value="0" velocity_linear="1.0" acceleration_linear="0.4" /> 
-	    <ForceSuccess>
-		    <Motion command="forward_stuck" value="0.04" /> 
-            </ForceSuccess>
+		<!-- maybe go stuck slower -->
+	    <Motion command="forward" value="0" velocity_linear="0.1" acceleration_linear="0.4" /> 
+	    
+		<ForceSuccess>
+		    <Motion command="forward_stuck" value="0.02" /> 
+        </ForceSuccess>
 	    <Motion command="forward" value="0" velocity_linear="1.2" acceleration_linear="0.8" /> 
 
 	    <Dynamixel label="fork_left" position="183" velocity="150"/>
