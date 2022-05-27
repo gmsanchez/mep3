@@ -1,0 +1,48 @@
+<root main_tree_to_execute="BehaviorTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="BehaviorTree">
+        <SequenceStar>
+            
+        <WaitMatchStart state="1"/>
+
+	    <Motion command="forward" velocity_linear="0.2" acceleration_linear="0.6" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
+
+        <WaitMatchStart state="2"/>
+
+	    <SequenceStar>
+	      <ForceSuccess>
+				<Timeout msec="100000">
+
+					<TaskSequence>
+						<ForceSuccess>
+							<RecoveryNode number_of_retries="3" name="RecoveryNode">
+								<Sequence>
+									<Motion command="forward" velocity_linear="0.2" acceleration_linear="0.6" velocity_angular="15.0" acceleration_angular="15.0" value="0" /> 
+
+									<PreciseNavigate goal="0.9755;0.443;180"/>
+								</Sequence>
+								<Sequence>
+									<Wait duration="1.0" />
+									
+									<Motion command="forward" velocity_linear="0.2" acceleration_linear="0.6" velocity_angular="15.0" acceleration_angular="15.0" value="-0.1" />
+
+									<Wait duration="1.0" />
+								</Sequence>
+
+							</RecoveryNode>
+						</ForceSuccess>
+					</TaskSequence>
+
+				</Timeout>
+			</ForceSuccess>
+
+			<CanbusSend can_id="8192" message="15" />
+			<CanbusSend can_id="8192" message="15" />
+			<CanbusSend can_id="8192" message="15" />
+
+		</SequenceStar>
+
+            <!-- Stop the motion driver / `can_id` and `message` must be decimals, not hexadecimals. -->
+        </SequenceStar>
+    </BehaviorTree>
+    <!-- ////////// --></root>

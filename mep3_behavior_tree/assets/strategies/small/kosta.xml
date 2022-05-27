@@ -393,9 +393,9 @@
 	    
 	    <PreciseNavigate goal="0.228;0.768;90"/>
 
-	    <Motion command="forward" value="0" velocity_linear="1.0" acceleration_linear="0.4" /> 
+	    <Motion command="forward" value="0" velocity_linear="0.1" acceleration_linear="0.4" /> 
 	    <ForceSuccess>
-		    <Motion command="forward_stuck" value="0.03" /> 
+		    <Motion command="forward_stuck" value="0.025" /> 
             </ForceSuccess>
 	    <Motion command="forward" value="0" velocity_linear="1.2" acceleration_linear="0.7" /> 
 
@@ -421,9 +421,9 @@
 	    
 	    <PreciseNavigate goal="1.266;-0.330;0"/>
 
-	    <Motion command="forward" value="0" velocity_linear="1.0" acceleration_linear="0.4" /> 
+	    <Motion command="forward" value="0" velocity_linear="0.1" acceleration_linear="0.4" /> 
 	    <ForceSuccess>
-		    <Motion command="forward_stuck" value="0.03" /> 
+		    <Motion command="forward_stuck" value="0.025" /> 
             </ForceSuccess>
 	    <Motion command="forward" value="0" velocity_linear="1.2" acceleration_linear="0.8" /> 
 
