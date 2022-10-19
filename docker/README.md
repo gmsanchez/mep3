@@ -2,7 +2,7 @@
 
 ## Local development environment
 
-1) Install `git`, `make` and `docker`
+1) Install `git`, `make`, `docker` and `docker.io`
 1) Run docker daemon and add yourself to docker group
     ```sh
     sudo systemctl enable docker.service
@@ -21,6 +21,7 @@
 1) Run provisioning script 
    ```sh
    cd ~/ros2_ws/src/mep3/docker
+   newgrp docker
    make devel
    ```
 1) Wait for the provisioning script to finish
